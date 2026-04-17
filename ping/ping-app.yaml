@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ping
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/michal5520pl/gitops-inzynierka-kustomize.git
+    path: overlays/deploy
+    targetRevision: main
+  destination:
+    name: "in-cluster"
+    namespace: ping
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
