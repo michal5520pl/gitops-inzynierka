@@ -6,6 +6,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
 spec:
+  sourceRepos:
+    - https://kubernetes.github.io/cloud-provider-openstack
   destinations:
     - name: in-cluster
       namespace: openstack-*
