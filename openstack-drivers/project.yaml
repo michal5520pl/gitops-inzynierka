@@ -1,5 +1,5 @@
 ---
-apiVersion: argoproj.ioalpha1
+apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: openstack
