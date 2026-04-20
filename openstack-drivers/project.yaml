@@ -1,0 +1,48 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: openstack
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+spec:
+  destinations:
+    - name: in-cluster
+      namespace: openstack-*
+  clusterResourceWhitelist:
+    - group: ''
+      kind: Namespace
+      name: openstack-*
+    - group: storage.k8s.io/v1
+      kind: CSIDriver
+    - group: storage.k8s.io/v1
+      kind: StorageClass
+    - group: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      name: csi-*
+    - group: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: csi-*
+    - group: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      name: openstack-manila-csi*
+  namespaceResourceWhitelist:
+    - group: apps/v1
+      kind: Deployment
+    - group: apps/v1
+      kind: DaemonSet
+    - group: apps/v1
+      kind: StatefulSet
+    - group: v1
+      kind: ServiceAccount
+    - group: rbac.authorization.k8s.io/v1
+      kind: RoleBinding
+    - group: rbac.authorization.k8s.io/v1
+      kind: Role
+    - group: v1
+      kind: Secret
+    - group: v1
+      kind: Service
+    - group: v1
+      kind: ConfigMap
+...

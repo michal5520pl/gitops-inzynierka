@@ -1,0 +1,43 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: openstack-drivers
+spec:
+  goTemplate: true
+  goTemplateOptions:
+    - missingkey=error
+  generators:
+    - list:
+        elements:
+          - app: cinder-csi-plugin
+            chart: openstack-cinder-csi
+          - app: manila-csi-plugin
+            chart: openstack-manila-csi
+  template:
+    metadata:
+      name: '{{.app}}'
+    spec:
+      project: openstack
+      syncPolicy:
+        automated:
+          enabled: true
+          selfHeal: true
+      source:
+        chart: "{{.app}}"
+        repoURL: https://kubernetes.github.io/cloud-provider-openstack
+        targetRevision: 2.35.0
+        helm:
+          valuesObject: # these values will be used only by cinder-csi-plugin, because manila-csi-plugin does not use these variables
+            secret:
+              enabled: true
+              create: false
+              hostMount: false
+              name: cinder-csi-cloud-config
+            storageClass:
+              delete:
+                isDefault: true
+      destination:
+        name: in-cluster
+        namespace: "openstack-{{.app}}"
+...
