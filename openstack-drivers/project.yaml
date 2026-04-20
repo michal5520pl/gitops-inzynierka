@@ -1,5 +1,5 @@
 ---
-apiVersion: argoproj.io/v1alpha1
+apiVersion: argoproj.ioalpha1
 kind: AppProject
 metadata:
   name: openstack
@@ -15,36 +15,36 @@ spec:
     - group: ''
       kind: Namespace
       name: openstack-*
-    - group: storage.k8s.io/v1
+    - group: storage.k8s.io
       kind: CSIDriver
-    - group: storage.k8s.io/v1
+    - group: storage.k8s.io
       kind: StorageClass
-    - group: rbac.authorization.k8s.io/v1
+    - group: rbac.authorization.k8s.io
       kind: ClusterRoleBinding
       name: csi-*
-    - group: rbac.authorization.k8s.io/v1
+    - group: rbac.authorization.k8s.io
       kind: ClusterRole
       name: csi-*
-    - group: rbac.authorization.k8s.io/v1
+    - group: rbac.authorization.k8s.io
       kind: ClusterRole
       name: openstack-manila-csi*
   namespaceResourceWhitelist:
-    - group: apps/v1
+    - group: apps
       kind: Deployment
-    - group: apps/v1
+    - group: apps
       kind: DaemonSet
-    - group: apps/v1
+    - group: apps
       kind: StatefulSet
-    - group: v1
+    - group: ''
       kind: ServiceAccount
-    - group: rbac.authorization.k8s.io/v1
+    - group: rbac.authorization.k8s.io
       kind: RoleBinding
-    - group: rbac.authorization.k8s.io/v1
+    - group: rbac.authorization.k8s.io
       kind: Role
-    - group: v1
+    - group: ''
       kind: Secret
-    - group: v1
+    - group: ''
       kind: Service
-    - group: v1
+    - group: ''
       kind: ConfigMap
 ...
