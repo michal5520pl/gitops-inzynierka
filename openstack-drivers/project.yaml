@@ -27,7 +27,10 @@ spec:
       name: csi-*
     - group: rbac.authorization.k8s.io
       kind: ClusterRole
-      name: openstack-manila-csi*
+      name: manila-csi*
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+      name: manila-csi*
   namespaceResourceWhitelist:
     - group: apps
       kind: Deployment
