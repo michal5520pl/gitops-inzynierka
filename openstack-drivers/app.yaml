@@ -20,6 +20,8 @@ spec:
     spec:
       project: openstack
       syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
         automated:
           enabled: true
           selfHeal: true
