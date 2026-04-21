@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: nfs-csi
   namespace: argocd
-  annotation:
+  annotations:
     argocd.argoproj.io/sync-wave: "-1"
 spec:
   project: openstack
