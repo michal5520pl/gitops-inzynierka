@@ -10,9 +10,9 @@ spec:
   generators:
     - list:
         elements:
-          - app: cinder-csi-plugin
+          - app: cinder-csi
             chart: openstack-cinder-csi
-          - app: manila-csi-plugin
+          - app: manila-csi
             chart: openstack-manila-csi
   template:
     metadata:
