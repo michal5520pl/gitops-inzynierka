@@ -30,12 +30,12 @@ spec:
           kind: ClusterRole
           name: manila-csi-openstack-manila-csi-controllerplugin
           jsonPointers:
-            - /roles
+            - /rules
         - group: rbac.authorization.k8s.io
           kind: ClusterRole
           name: manila-csi-openstack-manila-csi-nodeplugin
           jsonPointers:
-            - /roles
+            - /rules
       source:
         chart: "{{.chart}}"
         repoURL: https://kubernetes.github.io/cloud-provider-openstack
