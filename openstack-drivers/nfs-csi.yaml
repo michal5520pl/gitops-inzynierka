@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nfs-csi
+  namespace: argocd
+  annotation:
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  project: openstack
+  source:
+    chart: csi-driver-nfs
+    repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+    targetRevision: 4.13.2
+  destination:
+    name: "in-cluster"
+    namespace: openstack-nfs-csi
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
