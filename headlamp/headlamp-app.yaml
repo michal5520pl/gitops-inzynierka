@@ -33,6 +33,8 @@ spec:
         volumeMounts:
           - name: "headlamp-cert"
             mountPath: "/headlamp-cert"
+        probes:
+          scheme: HTTPS
   destination:
     name: "in-cluster"
     namespace: kube-dashboard
