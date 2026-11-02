@@ -19,6 +19,10 @@ spec:
             secret:
               create: false
               name: oidc
+            externalSecret:
+              name: oidc
+              enabled: true
+              hasScopes: true
           tlsCertPath: "/headlamp-cert/cert.cer"
           tlsKeyPath: "/headlamp-cert/cert.key"
         volumes:
