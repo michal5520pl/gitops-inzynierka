@@ -13,6 +13,7 @@ spec:
       valuesObject:
         service:
           type: LoadBalancer
+          port: 443
         config:
           oidc:
             secret:
