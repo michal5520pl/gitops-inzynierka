@@ -13,6 +13,25 @@ spec:
       valuesObject:
         service:
           type: LoadBalancer
+        config:
+          oidc:
+            secret:
+              create: false
+              name: oidc
+          tlsCertPath: "/headlamp-cert/cert.cer"
+          tlsKeyPath: "/headlamp-cert/cert.key"
+        volumes:
+          - name: "headlamp-cert"
+            secret:
+              secretName: "headlamp-tls"
+              items:
+                - key: "tls.crt"
+                  path: "cert.cer"
+                - key: "tls.key"
+                  path: "cert.key"
+        volumeMounts:
+          - name: "headlamp-cert"
+            mountPath: "/headlamp-cert"
   destination:
     name: "in-cluster"
     namespace: kube-dashboard
