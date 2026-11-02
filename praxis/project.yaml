@@ -1,0 +1,9 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: praxis
+  namespace: praxis
+spec:
+  destinations:
+    - name: in-cluster
+      namespace: praxis
