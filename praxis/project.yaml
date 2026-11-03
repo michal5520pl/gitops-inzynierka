@@ -7,3 +7,12 @@ spec:
   destinations:
     - name: in-cluster
       namespace: praxis
+  roles:
+    - name: praxis-app-admin
+      policies:
+        - p, proj:praxis:praxis-app-admin, applications, *, praxis/*, allow
+        - p, proj:praxis:praxis-app-admin, applicationsets, *, praxis/*, allow
+        - p, proj:praxis:praxis-app-admin, repositories, *, praxis/*, allow
+        - p, proj:praxis:praxis-app-admin, logs, *, praxis/*, allow
+      groups:
+        - kubernetes-praxis-admin
