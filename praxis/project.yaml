@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: praxis
-  namespace: praxis
+  namespace: argocd
 spec:
   destinations:
     - name: in-cluster
