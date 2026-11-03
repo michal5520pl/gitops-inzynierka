@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ping
+  name: ping-praxis
   namespace: praxis
 spec:
   project: praxis
