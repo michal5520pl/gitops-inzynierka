@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ping
+  namespace: praxis
+spec:
+  project: praxis
+  source:
+    repoURL: https://github.com/michal5520pl/gitops-inzynierka-kustomize.git
+    path: overlays/deploy
+    targetRevision: main
+  destination:
+    name: "in-cluster"
+    namespace: praxis
+  syncPolicy:
+    automated:
+      enabled: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
